@@ -102,27 +102,49 @@ body {
     border-color: #2e7d32;
 }
 
-/* Mobil Uyumluluk */
+/* --- SADECE MOBİL İÇİN ÜST BAR (HEADER) SABİTLEME VE İNCELTME --- */
+
 @media (max-width: 768px) {
-    .top-bar {
+
+    /* Üst barı saran ana kapsayıcı (header) */
+    header {
+        position: sticky;
+        /* Ekranı kaydırınca yukarıya zamk gibi yapıştırır */
+        top: 0;
+        z-index: 9999;
+        /* Sayfadaki diğer her şeyin (harita, resimler vb.) üstünde kalmasını sağlar */
+        padding: 10px 5px !important;
+        /* İç boşlukları daraltıp o şişkin/kaba görüntüyü eziyoruz */
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        /* Aşağı kaydırınca sayfanın üzerine düştüğünü belli eden şık bir gölge */
+    }
+
+    /* Çobançeşme Çiğköfte başlığı/logosu */
+    header h1,
+    .logo {
+        font-size: 22px !important;
+        /* Yazıyı mobilde daha kibar hale getiriyoruz */
+        margin-bottom: 5px;
+    }
+
+    /* Menü, Tarihçe, İletişim linkleri */
+    header nav a {
+        font-size: 14px;
+        margin: 0 8px;
+        /* Linklerin arasını biraz kısarak daraltıyoruz */
+    }
+
+    /* Hemen Ara butonu */
+    .hemen-ara-buton {
+        padding: 8px 20px !important;
+        /* Butonu dikeyde inceltiyoruz */
+        font-size: 14px !important;
+        margin-top: 5px;
+    }
+
+    /* En üstteki siyah ince şerit (HER GÜN TAZE ÇİĞKÖFTE) yer kaplamasın diye mobilde gizleyebiliriz (Opsiyonel) */
+    .siyah-serit {
         display: none;
-    }
-
-    /* Mobilde çok yer kaplamasın diye üst barı gizleriz */
-    .main-nav {
-        flex-direction: column;
-        gap: 15px;
-    }
-
-    .orta-menuler {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 10px;
-    }
-
-    .orta-menuler a {
-        margin: 0 5px;
     }
 }
 

@@ -649,6 +649,35 @@ body {
     }
 }
 
+/* --- HARİTA RESPONSIVE (MOBİL UYUM) AYARLARI --- */
+
+/* Haritayı saran dış kutu (HTML'de haritanın etrafında bir div varsa onun class'ını buraya yazabilirsin, ben örnek olarak harita-kutu diyorum) */
+.harita-kutu {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    /* Haritayı jilet gibi tam ortaya hizalar */
+    overflow: hidden;
+    /* İŞTE SİHİR BURADA: Ekrandan taşan kısmı gizler, sayfanın sağa sola kaymasını engeller */
+    padding: 15px;
+    /* Mobilde kenarlardan azıcık nefes alsın diye */
+    box-sizing: border-box;
+}
+
+/* Haritanın kendisi (iframe) */
+.harita-kutu iframe {
+    width: 100% !important;
+    /* Google'ın sabit genişliğini zorla ezer ve ekrana uydurur */
+    max-width: 800px;
+    /* Bilgisayardan girilince de devasa olup çirkinleşmesini engeller */
+    height: 350px !important;
+    /* Mobilde parmakla gezinmek için en ideal yükseklik */
+    border-radius: 15px;
+    /* Bizim sitenin o premium yuvarlak köşelerine uyum sağlasın */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    /* Hafif havalı bir gölge */
+}
+
 footer {
     width: 100%;
     /* Ekranı sağdan sola tamamen kaplar */

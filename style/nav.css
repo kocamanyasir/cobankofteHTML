@@ -94,11 +94,6 @@
         box-shadow: 5px 0 15px rgba(0, 0, 0, 0.2);
     }
 
-    .mobil-yan-menu-ayar {
-        height: calc(var(--vh, 1vh) * 100) !important;
-        overflow-y: auto;
-    }
-
     /* JavaScript ile menü açıldığında sola kayıp ekrana girer */
     #mobil-yan-menu.aktif {
         left: 0;

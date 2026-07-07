@@ -238,12 +238,21 @@ footer p {
     font-size: 14px;
 }
 
-/* Sadece telefon ekranlarında (768px ve altı) geçerli olacak kural */
 @media (max-width: 768px) {
-    .footer-ana {
-        /* Footer'ını kapsayan en dış class'ın adını buraya yaz */
-        /* env(safe-area-inset-bottom) telefonun kendi alt barının yüksekliğini otomatik hesaplar */
-        /* Üzerine ekstra 30px daha koyuyoruz ki nefes alsın */
-        padding-bottom: calc(env(safe-area-inset-bottom, 20px) + 40px) !important;
+    header {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    nav {
+        margin-bottom: 10px;
+    }
+
+    nav a {
+        margin: 0 10px;
+    }
+
+    .hero h1 {
+        font-size: 32px;
     }
 }

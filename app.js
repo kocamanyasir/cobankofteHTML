@@ -86,16 +86,4 @@ document.addEventListener("DOMContentLoaded", () => {
     loadComponent("footer-placeholder", "components/footer.html");
 });
 
-// Tarayıcının sunduğu GERÇEK görünür alanı hesaplayan fonksiyon
-function gercekEkranBoyutunuAyarla() {
-    // window.innerHeight, Chrome'un alt çubuklar hariç sana bıraktığı net alandır
-    let vh = window.innerHeight * 0.01;
-    // Bu değeri CSS'in okuyabilmesi için ':root' içine özel bir değişken (--vh) olarak yazıyoruz
-    document.documentElement.style.setProperty('--vh', `${vh}px`);
-}
 
-// Sayfa ilk açıldığında çalıştır
-gercekEkranBoyutunuAyarla();
-
-// Kullanıcı telefonu yan çevirirse veya adres çubuğu kaybolursa boyutu anında güncelle
-window.addEventListener('resize', gercekEkranBoyutunuAyarla);

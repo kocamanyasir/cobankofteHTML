@@ -444,7 +444,7 @@ body {
 /* --- GOOGLE YORUM KUTUSU TASARIMI --- */
 .google-yorum-alani {
     background-color: #ffffff;
-    border-radius: 12px;
+    border-radius: 15px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
     /* Hafif ve şık bir gölge */
     text-align: center;
@@ -453,7 +453,11 @@ body {
     margin: 40px auto;
     /* Sayfanın ortasında durmasını sağlar */
     border-top: 4px solid #ea4335;
-    /* Üste Google kırmızısı ince ve şık bir çizgi çeker */
+    /* Üstten 40px boşluk, SAĞ VE SOL KESİNLİKLE AUTO (PC'de ortalamak için) */
+    margin: 40px auto !important;
+    /* İŞTE SİHİR BURADA: Genişliği %100 yap ama sağdan 15, soldan 15 (toplam 30px) düş! */
+    width: calc(100% - 30px) !important;
+    box-sizing: border-box;
 }
 
 .google-yorum-alani .yildizlar {
@@ -662,6 +666,14 @@ body {
     padding: 15px;
     /* Mobilde kenarlardan azıcık nefes alsın diye */
     box-sizing: border-box;
+    padding: 0 !important;
+    /* İçerideki nefes boşluğunu tamamen siliyoruz ki harita kenarlara değsin */
+    border-radius: 15px;
+    /* Kartımıza o kurumsal yuvarlak köşeleri veriyoruz */
+    overflow: hidden;
+    /* EN ÖNEMLİ KOD: Haritanın sivri köşelerini makaslar ve kartın yuvarlak köşesine hapseder! */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 15);
+    /* Hafif derinlik hissi */
 }
 
 /* Haritanın kendisi (iframe) */

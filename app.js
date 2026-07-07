@@ -1,44 +1,51 @@
-// En üstteki dönen yazı fonksiyonu
-document.addEventListener("DOMContentLoaded", function () {
+// --- 1. YUMUŞAK KAYDIRMA (EVENT DELEGATION İLE DİNAMİK YAPI) ---
+// Artık direkt "nav a" aramıyoruz, tüm dokümanı dinleyip "Tıklanan şey bir link mi?" diye soruyoruz.
+document.addEventListener('click', function (e) {
+    // Tıklanan element veya onun kapsayıcısı "#" ile başlayan bir link mi kontrol et
+    const anchor = e.target.closest('a[href^="#"]');
 
-    // --- 1. YUMUŞAK KAYDIRMA (SMOOTH SCROLL) ---
-    document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            e.preventDefault(); // Küt diye atlamayı engeller
+    if (anchor) {
+        e.preventDefault(); // Küt diye atlamayı engeller
+        const hedefId = anchor.getAttribute('href');
 
-            const hedefBolum = document.querySelector(this.getAttribute('href'));
-
+        // Sadece href="#" verilmiş boş linkleri es geçmek için
+        if (hedefId !== '#') {
+            const hedefBolum = document.querySelector(hedefId);
             if (hedefBolum) {
                 hedefBolum.scrollIntoView({
                     behavior: 'smooth',
                     block: 'start'
                 });
             }
-        });
-    });
+        }
+    }
+});
 
-    const duyurular = [
-        "GELENEKSEL ÇİĞKÖFTE LEZZETİ",
-        "ÜCRETSİZ EVLERE SERVİS İMKANI",
-        "HER GÜN TAZE ÇİĞKÖFTE"
-    ];
-
-    let sira = 0;
+// --- 2. DÖNEN DUYURU YAZISI (GECİKMELİ YÜKLEME KONTROLÜ) ---
+// Duyuru alanı HTML'i fetch ile sonradan geleceği için, elementin var olup olmadığını 
+// yarım saniyede bir kontrol eden "Akıllı Bekleyici" (Polling) ekliyoruz.
+const duyuruKontrol = setInterval(() => {
     const duyuruAlani = document.getElementById('duyuru-alani');
 
+    // Eğer duyuru alanı sayfaya fetch edildiyse animasyonu başlat
     if (duyuruAlani) {
+        clearInterval(duyuruKontrol); // Elementi bulduk, artık aramayı durdur
 
-        // Arka planı sabit tutup sadece yazıyı döndürmek için yazıyı bir span içine hapsediyoruz
+        const duyurular = [
+            "GELENEKSEL ÇİĞKÖFTE LEZZETİ",
+            "ÜCRETSİZ EVLERE SERVİS İMKANI",
+            "HER GÜN TAZE ÇİĞKÖFTE"
+        ];
+
+        let sira = 0;
+
+        // Arka planı sabit tutup yazıyı span içine alıyoruz
         duyuruAlani.innerHTML = `<span id="duyuru-metni" style="transition: opacity 0.5s ease; opacity: 1; display: inline-block;">${duyurular[0]}</span>`;
-
-        // Artık animasyonu ana kutuya değil, sadece içindeki bu yazıya uygulayacağız
         const duyuruMetni = document.getElementById('duyuru-metni');
 
         setInterval(() => {
-            // Sadece içerdeki yazıyı yavaşça görünmez yap (Arka plan etkilenmez)
             duyuruMetni.style.opacity = 0;
 
-            // Yarım saniye sonra yazıyı değiştir ve tekrar görünür yap
             setTimeout(() => {
                 sira = (sira + 1) % duyurular.length;
                 duyuruMetni.innerText = duyurular[sira];
@@ -47,9 +54,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         }, 3000);
     }
-
-});
-
+}, 500); // Her 500ms'de bir HTML yüklendi mi diye bakar
 // Morphing ikon fonksiyonu
 function menuTetikle() {
     // 3 farklı elementi buluyoruz

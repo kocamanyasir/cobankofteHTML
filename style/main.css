@@ -18,21 +18,26 @@ body {
     position: relative;
     min-height: 100%;
     scroll-behavior: smooth;
+    padding-top: 30px;
 }
 
+/* --- Header --- */
 .premium-header {
-    position: sticky;
+    position: fixed;
     top: 0;
-    z-index: 1000;
+    left: 0;
+    width: 100%;
+    /* Sayfanın tamamını kaplaması için */
+    z-index: 9999;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
-/* Sırayla yazılan üst bar */
 .top-bar-duyuru {
     background-color: #222;
     color: #fbc02d;
     text-align: center;
-    padding: 8px 10px;
+    padding: 8px 12px;
+    margin-top: 0 !important;
     font-size: 13px;
     font-weight: 600;
     letter-spacing: 1px;

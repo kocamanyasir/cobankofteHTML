@@ -1,7 +1,14 @@
+.main-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 9999;
+}
+
 /* Motor ikonu ve hareket ettirme */
 .scooter-ikon {
     display: inline-block;
-    /* Emojinin hareket edebilmesi için serbest bırakıyoruz */
     transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     margin-right: 5px;
     /* Yazıyla arasına azıcık nefes boşluğu koyuyoruz */

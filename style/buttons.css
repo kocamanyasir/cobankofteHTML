@@ -1,23 +1,17 @@
 .whatsapp-buton {
     position: fixed;
     bottom: 20px;
-    /* Ekranın altından yüksekliği */
     left: 20px;
-    /* Ekranın solundan uzaklığı */
     z-index: 1000;
-    /* Her şeyin üstünde görünmesini sağlar */
     background-color: #25D366;
-    /* Orijinal WhatsApp Yeşili */
     width: 60px;
     height: 60px;
     border-radius: 50%;
-    /* Tam yuvarlak yapar */
     display: flex;
     justify-content: center;
     align-items: center;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
     animation: nabiz-animasyonu 2s infinite;
-    /* Sürekli tekrarlayan hareket */
 }
 
 /* WhatsApp İkonunun Boyutu */

@@ -17,34 +17,28 @@
     color: #d32f2f;
     display: inline-block;
     transition: transform 0.5s ease;
-    /* 0.5 Saniyede yavaşça döner */
     transform: rotate(90deg);
-    /* Kapalıyken aşağı doğru bakar */
 }
 
 /* Kutu Açılınca Okun Yön Değiştirmesi */
 .menu-item[open] .ok-isareti {
     transform: rotate(-90deg);
-    /* Açıkken yukarı doğru döner */
 }
 
 /* İçeriğin Yavaş ve Yumuşak Bir Şekilde Belirmesi (Animasyon) */
 .menu-item[open] .acilir-icerik {
     animation: yavascaAcil 0.5s ease-out;
-    /* İçeriğe 0.5 saniyelik pürüzsüz açılış efekti */
 }
 
 @keyframes yavascaAcil {
     0% {
         opacity: 0;
         transform: translateY(-15px);
-        /* Hafif yukarıdan başlar */
     }
 
     100% {
         opacity: 1;
         transform: translateY(0);
-        /* Yerine yumuşakça oturur */
     }
 }
 
@@ -62,21 +56,17 @@
     width: 100%;
 }
 
-/* Sütunların ikisi de eşit alan kaplasın ve ezilmesin */
 .bolum-sutun {
     flex: 1;
     min-width: 300px;
-    /* Sütunların çok daralıp bozulmasını engeller */
 }
 
-/* Sütunların içindeki kartları düzgünce alt alta dizer */
 .dikey-liste {
     display: flex;
     flex-direction: column;
     gap: 20px;
 }
 
-/* Kartların sütun içine tam oturması */
 .menu-item {
     width: 100%;
     max-width: 100%;
@@ -101,67 +91,46 @@
     margin: 0;
 }
 
-/* Her bir satırın ayarları */
 .ekstra-listesi li {
     display: flex;
     justify-content: space-between;
-    /* Yazıyı sola, fiyatı en sağa yaslar */
     align-items: center;
     background-color: #fffaf0;
-    /* Çok hafif, iştah açıcı sıcak krem rengi */
     margin-bottom: 10px;
     padding: 10px 15px;
     border-radius: 8px;
     border: 1px solid #f0e6d2;
-    /* Zarif bir çerçeve */
     color: #444;
     font-weight: 500;
     font-size: 14px;
     transition: all 0.3s ease;
-    /* Fareyle üzerine gelinceki değişimin hızı */
 }
 
-/* Fareyle (veya parmakla) üzerine gelindiğinde çalışacak şık animasyon */
+/* ====================================*/
 .ekstra-listesi li:hover {
     background-color: #ffffff;
     border-color: #d32f2f;
-    /* Kenarlık tatlı bir kırmızıya döner */
     box-shadow: 0 4px 10px rgba(211, 47, 47, 0.1);
-    /* Hafif gölge verir */
     transform: translateX(5px);
-    /* Satırı çok hafif sağa kaydırarak öne çıkarır */
 }
 
-/* Fiyat Rozeti (Badge) Tasarımı */
 .fiyat {
     background-color: #2e7d32;
-    /* Taze ve güven veren yeşil renk */
     color: white;
     padding: 4px 12px;
     border-radius: 20px;
-    /* Tam yuvarlak hap şekli */
     font-weight: 700;
     font-size: 13px;
     letter-spacing: 0.5px;
     box-shadow: 0 2px 5px rgba(46, 125, 50, 0.3);
 }
 
-/* Ücretsiz (0₺) Olan Ekstralar İçin Alternatif Renk (İsteğe Bağlı) */
-.fiyat.ucretsiz {
-    background-color: #fbc02d;
-    /* Sarı renk dikkat çeker */
-    color: #333;
-}
-
-/* Menü Başlığı ve Ok İşaretini Aynı Satıra Kilitler */
 .baslik-alani {
     display: flex !important;
     justify-content: space-between !important;
-    /* Yazıyı sola, oku en sağa yaslar */
     align-items: center !important;
     width: 100%;
     padding: 10px 0;
-    /* Tıklama alanını biraz ferahlatır */
 }
 
 /* Başlığın oku aşağı itmesini engeller */
@@ -169,13 +138,10 @@
     margin: 0 !important;
     font-size: 18px;
     text-align: left;
-    /* Başlığı sola hizalar */
 }
 
-/* Menü altındaki açıklamaların hizası */
 .menu-item p {
     text-align: left;
-    /* Açıklamaları da okuması kolay olsun diye sola hizalarız */
     margin-top: 5px;
     margin-bottom: 15px;
     font-size: 14px;
@@ -183,10 +149,8 @@
     line-height: 1.4;
 }
 
-/* Mobilde menü kutularının kenar boşluklarını toparlar */
 .menu-item {
     border-bottom: 1px solid #ddd;
-    /* Her menü arasına ince şık bir çizgi çeker */
     margin-bottom: 10px;
 }
 

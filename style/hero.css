@@ -1,4 +1,5 @@
 .main-nav {
+    margin-top: -2px !important;
     position: absolute;
     /* Ana kutunun (hero) tavanına çıkmasını sağlar */
     top: 0;
@@ -105,7 +106,7 @@
 }
 
 .hero {
-    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('../images/hero-arkaplan.jpg') center/cover;
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('../assets/hero-arkaplan.jpg') center/cover;
     color: white;
     text-align: center;
     position: relative;

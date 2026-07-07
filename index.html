@@ -13,29 +13,44 @@
         <div class="top-bar-duyuru" id="duyuru-alani">
             GELENEKSEL ÇİĞKÖFTE LEZZETİ
         </div>
+    </header>
 
+    <div id="mobil-overlay" onclick="menuTetikle()"></div>
+
+    <div id="mobil-yan-menu">
+        <nav class="yan-linkler">
+            <a href="#menu" onclick="menuTetikle()">Menü</a>
+            <a href="#hakkimizda" onclick="menuTetikle()">Tarihçe</a>
+            <a href="#iletisim" onclick="menuTetikle()">İletişim</a>
+        </nav>
+    </div>
+
+    <div class="hero">
         <div class="main-nav">
+            <div class="morphing-dots" onclick="menuTetikle()" id="nokta-ikon">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+
             <div class="logo-alani">
                 <span class="logo-metin">Çobançeşme</span>
                 <span class="logo-alt">Çiğköfte</span>
             </div>
-            <nav class="orta-menuler">
+
+            <nav class="orta-menuler masaustu-sadece">
                 <a href="#menu">Menü</a>
                 <a href="#hakkimizda">Tarihçe</a>
                 <a href="#iletisim">İletişim</a>
             </nav>
-            <a href="tel:05071367888" class="aksiyon-butonu">
-                <span class="ikon">📞</span>
-                <span class="numara">Hemen ara</span>
-            </a>
         </div>
-    </header>
 
-    <div class="hero">
         <h1>Çobançeşme'nin En Lezzetli Çiğköftesi</h1>
         <p>Adıyaman çiğköftesi kalitesinde, günlük taze yeşillikler ve enfes lezzet. Hemen sipariş verin, kapınıza
             gelsin!</p>
-        <a href="tel:05071367888" class="order-btn">🛵 Sipariş Ver</a>
+        <a href="tel:05071367888" class="order-btn">
+            <span class="scooter-ikon">🛵</span> Sipariş Ver
+        </a>
     </div>
 
     <div id="menu" class="section ikili-bolum">
@@ -144,7 +159,7 @@
                     </summary>
                     <div class="acilir-icerik">
                         <ul class="ekstra-listesi">
-                            <li><span>Kutu Kola</span> <span class="fiyat">+50₺</span></li>
+                            <li><span>Kutu Kola</span> <span class="fiyat">+60₺</span></li>
                             <li><span>Litrelik Kola</span> <span class="fiyat">+60₺</span></li>
                             <li><span>2 Litrelik Kola</span> <span class="fiyat">+80₺</span></li>
                             <li><span>2.5 Litrelik Kola</span> <span class="fiyat">+90₺</span></li>

@@ -17,8 +17,6 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 
-
-    // --- 2. KAYAN DUYURU BANDI (GÜNCELLENDİ) ---
     const duyurular = [
         "GELENEKSEL ÇİĞKÖFTE LEZZETİ",
         "ÜCRETSİZ EVLERE SERVİS İMKANI",
@@ -28,7 +26,6 @@ document.addEventListener("DOMContentLoaded", function () {
     let sira = 0;
     const duyuruAlani = document.getElementById('duyuru-alani');
 
-    // Eğer o sayfada duyuru alanı varsa çalıştır
     if (duyuruAlani) {
 
         // Arka planı sabit tutup sadece yazıyı döndürmek için yazıyı bir span içine hapsediyoruz
@@ -52,3 +49,14 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
 });
+function menuTetikle() {
+    // 3 farklı elementi buluyoruz
+    var ikon = document.getElementById("nokta-ikon");
+    var menu = document.getElementById("mobil-yan-menu");
+    var overlay = document.getElementById("mobil-overlay");
+
+    // Hepsine 'aktif' class'ını ekleyip çıkararak şovu başlatıyoruz
+    ikon.classList.toggle("aktif");
+    menu.classList.toggle("aktif");
+    overlay.classList.toggle("aktif");
+}

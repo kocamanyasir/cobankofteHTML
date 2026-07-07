@@ -24,7 +24,6 @@ body {
 /* Kayan Duyuru Barı Tasarımı */
 .top-bar-duyuru {
     background-color: #222;
-    /* Koyu siyah arka plan */
     color: #fbc02d;
     /* Şık bir sarı renk */
     text-align: center;
@@ -33,7 +32,6 @@ body {
     font-weight: 600;
     letter-spacing: 1px;
     height: 35px;
-    /* Sayfanın zıplamasını engellemek için sabitledik */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -41,12 +39,46 @@ body {
     /* Yumuşak kaybolma efekti */
 }
 
+#ana-header {
+    position: fixed;
+    /* Header'ı havaya kaldırır, altındaki resim onun altına kayar ve sayfayı kaydırsan da seninle gelir */
+    top: 0;
+    left: 0;
+    width: 100%;
+    /* rgba içindeki ilk 3 rakam bizim kırmızımız, sondaki 0.2 ise şeffaflık (cam) derecesidir */
+    background-color: rgba(132, 62, 62, 0.2);
+    z-index: 9000;
+    /* Her şeyin üstünde durmasını garantiye alır */
+    transition: background-color 0.4s ease;
+    /* Üzerine gelince rengin küt diye değil, yağ gibi yumuşakça değişmesini sağlar */
+}
+
 .main-nav {
-    background-color: #d32f2f;
+    /* --- EKLENEN SİHİRLİ KISIM --- */
+    position: absolute;
+    /* Ana kutunun (hero) tavanına çıkmasını sağlar */
+    top: 0;
+    /* Milimetrik olarak en tepeye çiviler */
+    left: 0;
+    /* En sola yaslar */
+    width: 100%;
+    /* Ekranı sağdan sola %100 kaplar */
+    box-sizing: border-box;
+    /* İç boşlukların (padding) ekran dışına taşmasını engeller */
+    z-index: 10;
+    /* Barın, alttaki resim veya yazıların üstünde kalmasını garantiye alır */
+
+    /* --- SENİN ESKİ KODLARIN (AYNEN KALDI) --- */
+    background-color: transparent;
     padding: 15px 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+
+/* Üzerine gelindiğinde (Hover) tam mat kırmızı yapma motoru */
+#ana-header:hover {
+    background-color: rgba(211, 47, 47, 1);
 }
 
 .logo-alani {
@@ -63,7 +95,7 @@ body {
 }
 
 .logo-alt {
-    color: #ffcccc;
+    color: white;
     font-size: 12px;
     text-transform: uppercase;
     letter-spacing: 2px;
@@ -79,7 +111,7 @@ body {
 }
 
 .orta-menuler a:hover {
-    color: #fbc02d;
+    color: #d32f2f;
 }
 
 .aksiyon-butonu {
@@ -97,41 +129,57 @@ body {
 }
 
 .aksiyon-butonu:hover {
-    background-color: #2e7d32;
+    background-color: #d32f2f;
     color: white;
-    border-color: #2e7d32;
+    border-color: #d32f2f;
 }
 
 /* Mobil Uyumluluk */
+/* --- MOBİL UYUMLULUK (KUSURSUZ HİZALAMA - GRID SİSTEMİ) --- */
 @media (max-width: 768px) {
-    .top-bar {
-        display: none;
+    .masaustu-sadece {
+        display: none !important;
     }
 
-    /* Mobilde çok yer kaplamasın diye üst barı gizleriz */
     .main-nav {
-        flex-direction: column;
-        gap: 15px;
+        display: grid;
+        /* Ekranı 3 eşit parçaya böleriz: Sol (1fr) - Orta (auto) - Sağ (1fr) */
+        grid-template-columns: 1fr auto 1fr;
+        align-items: center;
+        /* Her şeyi dikey eksende (yukarı-aşağı) tam merkeze kilitler */
+        padding: 15px 15px;
     }
 
-    .orta-menuler {
+    /* SOL: Morphing Dots */
+    .morphing-dots {
         display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 10px;
+        align-items: center;
+        /* Noktaların kendi içinde kaymasını engeller */
+        justify-self: start;
+        /* İkonu milimetrik olarak en sola çiviler */
+        gap: 6px;
+        cursor: pointer;
+        z-index: 10001;
+        /* Noktalar butona göre görsel olarak hafif yukarıda durursa diye 2px aşağı itiyoruz (Optik denge) */
+        margin-top: 2px;
     }
 
-    .orta-menuler a {
-        margin: 0 5px;
+    /* ORTA: Logo */
+    .logo-alani {
+        text-align: center;
+        justify-self: center;
+        /* Logoyu ekranın tam göbeğine kilitler */
     }
 }
 
 .hero {
-    /* Artık dışarıdan değil, kendi klasörümüzden çekiyoruz */
     background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('assets/hero-arkaplan.jpg') center/cover;
     color: white;
     text-align: center;
-    padding: 100px 20px;
+    position: relative;
+    padding: 150px 0 100px 0;
+    box-sizing: border-box;
+    width: 100%;
 }
 
 .hero h1 {
@@ -144,14 +192,53 @@ body {
     margin-bottom: 30px;
 }
 
+/* --- SİPARİŞ VER BUTONU (NORMAL HALİ) --- */
 .order-btn {
     background-color: #d32f2f;
     color: white;
     padding: 15px 30px;
     font-size: 18px;
     text-decoration: none;
-    border-radius: 5px;
+    border-radius: 8px;
     font-weight: bold;
+    display: inline-block;
+    /* Butonun transform (hareket) kodlarını algılaması için şarttır */
+
+    /* 1. Hissiyat: Yumuşak geçiş ve hafif bir gölge */
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    /* Apple tarzı özel yaylanma süresi */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
+}
+
+.order-btn:hover {
+    background-color: #b71c1c;
+    /* Rengi bir tık daha koyu, tok bir kırmızıya çeviririz */
+    transform: translateY(-4px);
+    /* Butonu 4 piksel havaya kaldırır */
+    box-shadow: 0 8px 15px rgba(211, 47, 47, 0.4);
+    /* Havaya kalktığı için kendi renginde efsane bir gölge yayar */
+}
+
+.order-btn:active {
+    transform: translateY(2px) scale(0.96);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* --- SCOOTER İKONUNU HAREKETE HAZIRLAMA --- */
+.scooter-ikon {
+    display: inline-block;
+    /* Emojinin hareket edebilmesi için serbest bırakıyoruz */
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    margin-right: 5px;
+    /* Yazıyla arasına azıcık nefes boşluğu koyuyoruz */
+}
+
+.order-btn:hover .scooter-ikon {
+    /* 1. translateX(-7px): Scooter'ı 8 piksel ileri (sağa) sürer.
+      2. translateY(0px): Ön tekeri 3 piksel havaya kaldırır.
+      3. rotate(0deg): Motoru geriye doğru 15 derece yatırıp "şaha kalkma" (wheelie) efekti verir.
+    */
+    transform: translateX(-10px) translateY(0px) rotate(0deg);
 }
 
 .section {
@@ -165,6 +252,137 @@ body {
     font-size: 32px;
     color: #d32f2f;
     margin-bottom: 30px;
+}
+
+/* Masaüstünde mobil ikonunu ve menüleri gizleriz */
+.morphing-dots,
+#mobil-yan-menu,
+#mobil-overlay {
+    display: none;
+}
+
+/* =========================================
+   SADECE MOBİL İÇİN JİLET GİBİ DİZİLİM
+   ========================================= */
+@media (max-width: 768px) {
+
+    /* 1. Üst Bar Dizilimi */
+    .masaustu-sadece {
+        display: none !important;
+    }
+
+    /* Linkleri mobilde sakla */
+
+    .main-nav {
+        display: grid;
+        grid-template-columns: auto 1fr auto;
+        /* Sol (Noktalar) - Orta (Logo) - Sağ (Buton) */
+        align-items: center;
+        padding: 15px 15px;
+    }
+
+    .logo-alani {
+        text-align: center;
+    }
+
+    /* 2. Morphing Dots (Nefes Alan Noktalar) Tasarımı */
+    .morphing-dots {
+        display: flex;
+        gap: 6px;
+        cursor: pointer;
+        z-index: 10001;
+        /* Menü açılınca üstte kalsın ki geri basabilelim */
+    }
+
+    .morphing-dots span {
+        width: 7px;
+        height: 7px;
+        background-color: white;
+        border-radius: 50%;
+        transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        /* Yaylanarak dönüş efekti */
+    }
+
+    /* Noktalar tıklandığında X işaretine dönüşür */
+    .morphing-dots.aktif span:nth-child(1) {
+        transform: translateX(13px) rotate(45deg);
+        width: 18px;
+        height: 3px;
+        border-radius: 2px;
+    }
+
+    .morphing-dots.aktif span:nth-child(2) {
+        opacity: 0;
+        /* Ortadaki yutulur */
+    }
+
+    .morphing-dots.aktif span:nth-child(3) {
+        transform: translateX(-13px) rotate(-45deg);
+        width: 18px;
+        height: 3px;
+        border-radius: 2px;
+    }
+
+    /* 3. Açılır Yan Menü (Pencere) */
+    #mobil-yan-menu {
+        display: flex;
+        position: fixed;
+        top: 0;
+        left: -100%;
+        /* Başlangıçta ekranın sol dışında saklı */
+        width: 60%;
+        /* Yüzde 25 çok küçük olacağı için 60 idealdir. İstersen değiştirebilirsin. */
+        height: 100vh;
+        background-color: rgba(132, 62, 62, 0.6);
+        /* Senin şeffaf kırmızı teman */
+        backdrop-filter: blur(15px);
+        /* Arkasını efsane buzlu cam yapar */
+        z-index: 10000;
+        transition: left 0.4s ease;
+        flex-direction: column;
+        padding-top: 100px;
+        /* Üst barın altında kalsın diye boşluk */
+        box-shadow: 5px 0 15px rgba(0, 0, 0, 0.2);
+    }
+
+    /* JavaScript ile menü açıldığında sola kayıp ekrana girer */
+    #mobil-yan-menu.aktif {
+        left: 0;
+    }
+
+    /* Yan Menü Linkleri */
+    .yan-linkler a {
+        display: block;
+        color: white;
+        text-decoration: none;
+        font-size: 20px;
+        font-weight: bold;
+        padding: 20px 30px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    /* 4. Arka Planı Blurlayan Siyah Cam (Overlay) */
+    #mobil-overlay {
+        display: block;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        background-color: rgba(0, 0, 0, 0.4);
+        /* Yarı saydam siyah */
+        backdrop-filter: blur(3px);
+        /* Arka planı hafifçe blurlar */
+        z-index: 9999;
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.4s ease;
+    }
+
+    #mobil-overlay.aktif {
+        opacity: 1;
+        visibility: visible;
+    }
 }
 
 /* -----------------------------------------------------------------------------------------------------------------------------*/

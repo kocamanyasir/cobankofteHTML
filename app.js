@@ -1,4 +1,4 @@
-// Sayfa tamamen yüklendikten sonra kodları çalıştır (Hataları önler)
+// En üstteki dönen yazı fonksiyonu
 document.addEventListener("DOMContentLoaded", function () {
 
     // --- 1. YUMUŞAK KAYDIRMA (SMOOTH SCROLL) ---
@@ -49,6 +49,8 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
 });
+
+// Morphing ikon fonksiyonu
 function menuTetikle() {
     // 3 farklı elementi buluyoruz
     var ikon = document.getElementById("nokta-ikon");
@@ -60,3 +62,21 @@ function menuTetikle() {
     menu.classList.toggle("aktif");
     overlay.classList.toggle("aktif");
 }
+// HTML parçalarını yükleyen ortak fonksiyon
+async function loadComponent(id, file) {
+    try {
+        const response = await fetch(file);
+        if (!response.ok) throw new Error(`Dosya bulunamadı: ${file}`);
+        const html = await response.text();
+        document.getElementById(id).innerHTML = html;
+    } catch (error) {
+        console.error("Bölüm yüklenirken hata oluştu:", error);
+    }
+}
+
+// Sayfa yüklendiğinde senin belirlediğin 3 HTML parçasını çağırıyoruz
+document.addEventListener("DOMContentLoaded", () => {
+    loadComponent("hero-placeholder", "components/hero.html");
+    loadComponent("menu-placeholder", "components/menu.html");
+    loadComponent("footer-placeholder", "components/footer.html");
+});

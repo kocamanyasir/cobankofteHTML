@@ -1,0 +1,79 @@
+.whatsapp-buton {
+    position: fixed;
+    bottom: 20px;
+    /* Ekranın altından yüksekliği */
+    left: 20px;
+    /* Ekranın solundan uzaklığı */
+    z-index: 1000;
+    /* Her şeyin üstünde görünmesini sağlar */
+    background-color: #25D366;
+    /* Orijinal WhatsApp Yeşili */
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    /* Tam yuvarlak yapar */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    animation: nabiz-animasyonu 2s infinite;
+    /* Sürekli tekrarlayan hareket */
+}
+
+/* WhatsApp İkonunun Boyutu */
+.whatsapp-buton img {
+    width: 35px;
+    height: 35px;
+}
+
+/* Büyüyüp Küçülme (Pulse) Animasyonunun Kuralları */
+@keyframes nabiz-animasyonu {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
+    }
+
+    50% {
+        transform: scale(1.1);
+        /* Butonu %10 büyütür */
+        box-shadow: 0 0 0 15px rgba(37, 211, 102, 0);
+        /* Dışarıya doğru kaybolan dalga efekti */
+    }
+
+    100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+    }
+}
+
+/* --- SİPARİŞ VER BUTONU (NORMAL HALİ) --- */
+.order-btn {
+    background-color: #d32f2f;
+    color: white;
+    padding: 15px 30px;
+    font-size: 18px;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: bold;
+    display: inline-block;
+    /* Butonun transform (hareket) kodlarını algılaması için şarttır */
+
+    /* 1. Hissiyat: Yumuşak geçiş ve hafif bir gölge */
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    /* Apple tarzı özel yaylanma süresi */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
+}
+
+.order-btn:hover {
+    background-color: #b71c1c;
+    /* Rengi bir tık daha koyu, tok bir kırmızıya çeviririz */
+    transform: translateY(-4px);
+    /* Butonu 4 piksel havaya kaldırır */
+    box-shadow: 0 8px 15px rgba(211, 47, 47, 0.4);
+    /* Havaya kalktığı için kendi renginde efsane bir gölge yayar */
+}
+
+.order-btn:active {
+    transform: translateY(2px) scale(0.96);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}

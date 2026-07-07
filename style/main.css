@@ -1,0 +1,44 @@
+/* style/main.css dosyası */
+@import url('./nav.css');
+@import url('./hero.css');
+@import url('./menu.css');
+@import url('./buttons.css');
+@import url('./footer.css');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #fcfcfc;
+    color: #333;
+    position: relative;
+    min-height: 100%;
+    scroll-behavior: smooth;
+}
+
+.premium-header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Sırayla yazılan üst bar */
+.top-bar-duyuru {
+    background-color: #222;
+    color: #fbc02d;
+    text-align: center;
+    padding: 8px 10px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.5s ease-in-out;
+}

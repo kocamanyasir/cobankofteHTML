@@ -1,0 +1,131 @@
+/* Motor ikonu ve hareket ettirme */
+.scooter-ikon {
+    display: inline-block;
+    /* Emojinin hareket edebilmesi için serbest bırakıyoruz */
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    margin-right: 5px;
+    /* Yazıyla arasına azıcık nefes boşluğu koyuyoruz */
+}
+
+.order-btn:hover .scooter-ikon {
+    transform: translateX(-10px) translateY(0px) rotate(0deg);
+}
+
+.section {
+    padding: 60px 20px;
+    max-width: 1000px;
+    margin: auto;
+    text-align: center;
+}
+
+.section h2 {
+    font-size: 32px;
+    color: #d32f2f;
+    margin-bottom: 30px;
+}
+
+/* ==========================  Mobil 3 dot kısmı ========================================= */
+
+/* Masaüstünde mobil ikonunu ve menüleri gizleriz */
+.morphing-dots,
+#mobil-yan-menu,
+#mobil-overlay {
+    display: none;
+}
+
+@media (max-width: 768px) {
+
+    .masaustu-sadece {
+        display: none !important;
+    }
+
+    .main-nav {
+        display: grid;
+        grid-template-columns: auto 1fr auto;
+        /* Sol (Noktalar) - Orta (Logo) - Sağ (Buton) */
+        align-items: center;
+        padding: 15px 15px;
+    }
+
+    .logo-alani {
+        text-align: center;
+    }
+
+    /* 2. Morphing Dots (Nefes Alan Noktalar) Tasarımı */
+    .morphing-dots {
+        display: flex;
+        gap: 6px;
+        cursor: pointer;
+        z-index: 10001;
+        /* Menü açılınca üstte kalsın ki geri basabilelim */
+    }
+
+    .morphing-dots span {
+        width: 7px;
+        height: 7px;
+        background-color: white;
+        border-radius: 50%;
+        transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    }
+
+    /* 3. Açılır Yan Menü (Pencere) */
+    #mobil-yan-menu {
+        display: flex;
+        position: fixed;
+        top: 0;
+        left: -100%;
+        /* Başlangıçta dışarda olmasını sağlıyor */
+        width: 60%;
+        /* açılma oranı */
+        height: 100vh;
+        background-color: rgba(132, 62, 62, 0.6);
+        /* şeffaf kırmızı tema */
+        backdrop-filter: blur(15px);
+        /* Arkasını efsane buzlu cam yapar */
+        z-index: 10000;
+        transition: left 0.4s ease;
+        flex-direction: column;
+        padding-top: 100px;
+        /* Üst barın altında kalsın diye boşluk */
+        box-shadow: 5px 0 15px rgba(0, 0, 0, 0.2);
+    }
+
+    /* JavaScript ile menü açıldığında sola kayıp ekrana girer */
+    #mobil-yan-menu.aktif {
+        left: 0;
+    }
+
+    /* Yan Menü Linkleri */
+    .yan-linkler a {
+        display: block;
+        color: white;
+        text-decoration: none;
+        font-size: 20px;
+        font-weight: bold;
+        padding: 20px 30px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    /* 4. Arka Planı Blurlayan Siyah Cam (Overlay) */
+    #mobil-overlay {
+        display: block;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        background-color: rgba(0, 0, 0, 0.5);
+        /* Yarı saydam siyah */
+        backdrop-filter: blur(3px);
+        /* Arka planı hafifçe blurlar */
+        z-index: 9999;
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.4s ease;
+    }
+
+    #mobil-overlay.aktif {
+        opacity: 1;
+        visibility: visible;
+    }
+}

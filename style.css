@@ -13,7 +13,9 @@ body {
     scroll-behavior: smooth;
 }
 
-/* Konsept 1: Çift Katlı Header CSS */
+/* ==========================================================================================================================================*/
+
+/* Header'ı scroll'a bağlıyor */
 .premium-header {
     position: sticky;
     top: 0;
@@ -39,46 +41,20 @@ body {
     /* Yumuşak kaybolma efekti */
 }
 
-#ana-header {
-    position: fixed;
-    /* Header'ı havaya kaldırır, altındaki resim onun altına kayar ve sayfayı kaydırsan da seninle gelir */
-    top: 0;
-    left: 0;
-    width: 100%;
-    /* rgba içindeki ilk 3 rakam bizim kırmızımız, sondaki 0.2 ise şeffaflık (cam) derecesidir */
-    background-color: rgba(132, 62, 62, 0.2);
-    z-index: 9000;
-    /* Her şeyin üstünde durmasını garantiye alır */
-    transition: background-color 0.4s ease;
-    /* Üzerine gelince rengin küt diye değil, yağ gibi yumuşakça değişmesini sağlar */
-}
-
 .main-nav {
-    /* --- EKLENEN SİHİRLİ KISIM --- */
     position: absolute;
     /* Ana kutunun (hero) tavanına çıkmasını sağlar */
     top: 0;
-    /* Milimetrik olarak en tepeye çiviler */
     left: 0;
-    /* En sola yaslar */
     width: 100%;
-    /* Ekranı sağdan sola %100 kaplar */
     box-sizing: border-box;
-    /* İç boşlukların (padding) ekran dışına taşmasını engeller */
     z-index: 10;
     /* Barın, alttaki resim veya yazıların üstünde kalmasını garantiye alır */
-
-    /* --- SENİN ESKİ KODLARIN (AYNEN KALDI) --- */
     background-color: transparent;
     padding: 15px 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-}
-
-/* Üzerine gelindiğinde (Hover) tam mat kırmızı yapma motoru */
-#ana-header:hover {
-    background-color: rgba(211, 47, 47, 1);
 }
 
 .logo-alani {
@@ -114,25 +90,28 @@ body {
     color: #d32f2f;
 }
 
-.aksiyon-butonu {
-    background-color: white;
-    color: #d32f2f;
-    padding: 8px 20px;
-    border-radius: 30px;
-    text-decoration: none;
-    font-weight: bold;
+/* Masaüstü Uyumluluk */
+.orta-menuler {
     display: flex;
+    justify-content: center;
+    gap: 50px;
     align-items: center;
-    gap: 8px;
-    border: 2px solid white;
+}
+
+.orta-menuler a {
+    text-decoration: none;
+    color: white;
+    font-weight: 600;
+    font-size: 18px;
     transition: all 0.3s ease;
 }
 
-.aksiyon-butonu:hover {
-    background-color: #d32f2f;
-    color: white;
-    border-color: #d32f2f;
+.orta-menuler a:hover {
+    color: #d32f2f;
+    text-shadow: 0 0 1.5px currentColor, 0 0 1.5px currentColor;
+    transform: scale(1.1);
 }
+
 
 /* Mobil Uyumluluk */
 /* --- MOBİL UYUMLULUK (KUSURSUZ HİZALAMA - GRID SİSTEMİ) --- */
@@ -143,14 +122,12 @@ body {
 
     .main-nav {
         display: grid;
-        /* Ekranı 3 eşit parçaya böleriz: Sol (1fr) - Orta (auto) - Sağ (1fr) */
         grid-template-columns: 1fr auto 1fr;
         align-items: center;
         /* Her şeyi dikey eksende (yukarı-aşağı) tam merkeze kilitler */
         padding: 15px 15px;
     }
 
-    /* SOL: Morphing Dots */
     .morphing-dots {
         display: flex;
         align-items: center;
@@ -160,7 +137,6 @@ body {
         gap: 6px;
         cursor: pointer;
         z-index: 10001;
-        /* Noktalar butona göre görsel olarak hafif yukarıda durursa diye 2px aşağı itiyoruz (Optik denge) */
         margin-top: 2px;
     }
 
@@ -171,6 +147,70 @@ body {
         /* Logoyu ekranın tam göbeğine kilitler */
     }
 }
+
+/* --- YAN MENÜ --- */
+
+.menu-ici-logo {
+    text-align: center;
+    padding: 20px 0 40px 0;
+    margin-bottom: 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Yan menüdeki logonun yazı tipi düzeni */
+.logo-metin {
+    color: white;
+    font-size: 24px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    line-height: 1.2;
+}
+
+.logo-alt {
+    color: white;
+    font-size: 11px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    margin-top: 2px;
+    display: block;
+}
+
+.menu-alt-yazi-kutu {
+    margin-top: auto;
+    padding: 30px 20px 40px 20px;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* --- YAZI VE İMZANIN İÇİNDE DURDUĞU GÖRÜNMEZ ÇERÇEVE --- */
+.soz-kutu {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.laf {
+    color: rgba(255, 255, 255, 0.9);
+    font-style: italic;
+    font-size: 20px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.usta {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 14px;
+    font-weight: 500;
+    font-style: italic;
+    margin-top: 4px;
+    margin-left: 4px;
+    letter-spacing: 2px;
+}
+
 
 .hero {
     background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('assets/hero-arkaplan.jpg') center/cover;
@@ -385,7 +425,7 @@ body {
     }
 }
 
-/* -----------------------------------------------------------------------------------------------------------------------------*/
+/* ===========================================================================================================================================*/
 
 /* Tarayıcının Varsayılan İnatçı Okunu Kesin Olarak Gizler */
 .menu-item summary {
@@ -580,7 +620,7 @@ body {
     margin-bottom: 10px;
 }
 
-/* -----------------------------------------------------------------------------------------------------------------------------*/
+/* ==========================================================================================================================================*/
 
 /* Tarihçe ve Hakkımızda Bölümü Tasarımı */
 .history-card {
@@ -650,14 +690,14 @@ body {
     }
 }
 
-/* -----------------------------------------------------------------------------------------------------------------------------*/
+/* ==========================================================================================================================================*/
 
 #iletisim {
     padding-top: 10px !important;
     /* İletişim kısmının üst boşluğunu kısar */
 }
 
-/* -----------------------------------------------------------------------------------------------------------------------------*/
+/* ==========================================================================================================================================*/
 
 /* --- GOOGLE YORUM KUTUSU TASARIMI --- */
 .google-yorum-alani {
@@ -732,7 +772,7 @@ body {
     margin-right: 10px;
 }
 
-/* -----------------------------------------------------------------------------------------------------------------------------*/
+/* ==========================================================================================================================================*/
 
 /* WhatsApp Sabit Buton Tasarımı */
 .whatsapp-buton {
@@ -783,9 +823,9 @@ body {
     }
 }
 
-/* -----------------------------------------------------------------------------------------------------------------------------*/
-/* --- YAN YANA İLETİŞİM VE HARİTA AYARLARI --- */
+/* ==========================================================================================================================================*/
 
+/* --- YAN YANA İLETİŞİM VE HARİTA AYARLARI --- */
 .iletisim-ikili {
     display: flex !important;
     flex-direction: row !important;

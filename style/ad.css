@@ -1,0 +1,182 @@
+/* --- Advertisement kısmı --- */
+.slider-container {
+    position: relative;
+    width: 100%;
+    height: calc(100vh - 20px);
+    margin: 0;
+    overflow: hidden;
+}
+
+/* 2. KAYAN ŞERİT */
+.slider-wrapper {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.5s ease-in-out;
+}
+
+/* 3. HER BİR AFİŞ KUTUSU */
+.slide {
+    min-width: 100%;
+    height: 100%;
+    flex-shrink: 0;
+    background-color: #2b1d14;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+}
+
+/* Sağ / Sol Ok Tasarımları */
+.slider-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: transparent;
+    color: white;
+    /* Okun kendi rengi */
+    border: none;
+    cursor: pointer;
+    padding: 14px 20px;
+    transition: all 0.3s ease;
+    z-index: 10;
+    text-shadow: 0px 2px 6px rgba(0, 0, 0, 0.6);
+}
+
+.slider-btn:hover {
+    background-color: transparent;
+    scale: 1.2;
+}
+
+.prev-btn {
+    left: 20px;
+}
+
+.next-btn {
+    right: 20px;
+}
+
+/* --- Konum yuvarlakları ---  */
+.slider-container {
+    position: relative;
+}
+
+.dots-container {
+    position: absolute;
+    bottom: 20px;
+
+    left: 50%;
+    transform: translateX(-50%);
+
+    display: flex;
+    gap: 10px;
+
+    z-index: 100;
+
+}
+
+.dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.4);
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.dot.active {
+    background-color: #ffffff;
+}
+
+@media (max-width: 768px) {
+    .slider-container {
+        width: 100% !important;
+        margin: 0 !important;
+        height: auto !important;
+        border-radius: 0 !important;
+        margin-bottom: 0 !important;
+    }
+
+    .slide {
+        aspect-ratio: 16 / 9;
+        width: 100%;
+    }
+
+    .slide img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+    }
+}
+
+/* --- AŞAĞI KAYDIRMA BUTONU ANA KUTUSU --- */
+.scroll-yonlendirici {
+    position: absolute;
+    bottom: 40px;
+    right: 50px;
+    color: #ffffff;
+    z-index: 20;
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    animation: siyahGolgeNabiz 2s infinite;
+    transition: color 0.3s ease;
+}
+
+/* --- "DAHASINI KEŞFET" YAZISININ STİLİ --- */
+.kesfet-yazi {
+    font-size: 15px;
+    /* Bir tık büyüttük */
+    font-weight: 800;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    opacity: 0;
+    transform: translateX(30px);
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.5s ease;
+}
+
+.scroll-yonlendirici:hover .kesfet-yazi {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.scroll-yonlendirici:hover {
+    color: #000000;
+}
+
+/* --- SİYAH GÖLGELİ NABIZ ANİMASYONU --- */
+@keyframes siyahGolgeNabiz {
+    0% {
+        filter: drop-shadow(0 0 0 rgba(0, 0, 0, 0.9));
+    }
+
+    50% {
+        filter: drop-shadow(0 0 8px rgba(0, 0, 0, 0.8)) drop-shadow(0 0 15px rgba(0, 0, 0, 0.5));
+    }
+
+    100% {
+        filter: drop-shadow(0 0 0 rgba(0, 0, 0, 0));
+    }
+}
+
+/* --- MOBİL KORUMA: Aşağı Kaydırma Oku Mobilde Gizlenir --- */
+@media (max-width: 768px) {
+    .scroll-yonlendirici {
+        display: none !important;
+    }
+}
+
+/* Menüye kaydırıldığında üst barın yazıyı kapatmasını engeller */
+#menu {
+    scroll-margin-top: 90px;
+}

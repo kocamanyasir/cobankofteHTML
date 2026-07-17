@@ -1,4 +1,19 @@
+/* --- Logo dizayn ve üst menü --- */
 .main-nav {
+    position: absolute;
+    top: 40px;
+    left: 0;
+    width: 100%;
+    box-sizing: border-box;
+    z-index: 10;
+    background-color: transparent;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.transparency-nav {
     position: fixed;
     top: 0;
     left: 0;
@@ -6,30 +21,129 @@
     z-index: 9999;
 }
 
-/* Motor ikonu ve hareket ettirme */
-.scooter-ikon {
-    display: inline-block;
-    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    margin-right: 5px;
-    /* Yazıyla arasına azıcık nefes boşluğu koyuyoruz */
+.logo-alani {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.1;
 }
 
-.order-btn:hover .scooter-ikon {
-    transform: translateX(-10px) translateY(0px) rotate(0deg);
+.logo-metin {
+    color: white;
+    font-size: 24px;
+    font-weight: 800;
+    letter-spacing: 1px;
 }
 
-.section {
-    padding: 60px 20px;
-    max-width: 1000px;
-    margin: auto;
-    text-align: center;
+.logo-alt {
+    color: white;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
 }
 
-.section h2 {
-    font-size: 32px;
+.orta-menuler {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    align-items: center;
+}
+
+.orta-menuler a {
+    text-decoration: none;
+    color: white;
+    font-weight: 600;
+    font-size: 18px;
+    transition: all 0.3s ease;
+}
+
+.orta-menuler a:hover {
     color: #d32f2f;
-    margin-bottom: 30px;
+    text-shadow: 0 0 1.5px currentColor, 0 0 1.5px currentColor;
+    transform: scale(1.1);
 }
+
+/* --- Mobil Uyumluluk (Logo matlık)--- */
+@media (max-width: 768px) {
+    .main-nav {
+        position: relative !important;
+        top: 0 !important;
+        padding: 15px 20px !important;
+        background: linear-gradient(145deg, #2a2a2a 0%, #0a0a0a 100%) !important;
+        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4) !important;
+    }
+}
+
+/* --- 1. MASAÜSTÜ KORUMASI (Sadece Mobilde Görünür) --- */
+.order-btn {
+    display: none !important;
+}
+
+/* --- MOBİL UYUMLULUK (KURŞUN GEÇİRMEZ YAPI) --- */
+@media (max-width: 768px) {
+
+    .main-nav {
+        display: flex;
+        align-items: center;
+        height: 65px;
+        position: relative !important;
+        padding: 0 !important;
+        background: linear-gradient(145deg, #2a2a2a 0%, #0a0a0a 100%) !important;
+        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4) !important;
+    }
+
+    .morphing-dots {
+        position: absolute;
+        left: 15px;
+        /* Sola çiviledik */
+        z-index: 10;
+    }
+
+    /* ORTA: Logoyu Merkeze Çivileyen Efsane Kod */
+    .logo-alani {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        text-align: center;
+        width: max-content;
+        z-index: 15;
+    }
+
+    .order-btn {
+        display: inline-flex !important;
+        position: absolute;
+        right: 5px;
+        top: 35%;
+        transform: translateY(-20%);
+        height: 40px !important;
+        min-height: 40px !important;
+        max-height: 40px !important;
+        width: max-content !important;
+        flex-direction: row !important;
+        align-items: center;
+        justify-content: center;
+        gap: 5px;
+        background-color: #d32f2f;
+        color: #ffffff !important;
+        text-decoration: none;
+        padding: 0 10px !important;
+        border-radius: 30px;
+        font-size: 13px !important;
+        line-height: 1 !important;
+        font-weight: 1000;
+        box-shadow: 0 4px 10px rgba(211, 47, 47, 0.4);
+        white-space: nowrap;
+    }
+
+    .order-btn:active {
+        background-color: #b71c1c;
+        transform: translateY(2px);
+    }
+
+    .order-btn:active .scooter-ikon {
+        transform: translateX(-3px) rotate(-10deg);
+    }
+}
+
 
 /* ==========================  Mobil 3 dot kısmı ========================================= */
 

@@ -1,6 +1,6 @@
 /* style/main.css dosyası */
 @import url('./nav.css');
-@import url('./hero.css');
+@import url('./ad.css');
 @import url('./menu.css');
 @import url('./buttons.css');
 @import url('./footer.css');
@@ -13,7 +13,7 @@
 }
 
 body {
-    background-color: #fcfcfc;
+    background-color: white;
     color: #333;
     position: relative;
     min-height: 100%;

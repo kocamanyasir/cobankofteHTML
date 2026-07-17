@@ -50,21 +50,14 @@
     border-radius: 8px;
     font-weight: bold;
     display: inline-block;
-    /* Butonun transform (hareket) kodlarını algılaması için şarttır */
-
-    /* 1. Hissiyat: Yumuşak geçiş ve hafif bir gölge */
     transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-    /* Apple tarzı özel yaylanma süresi */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
 }
 
 .order-btn:hover {
     background-color: #b71c1c;
-    /* Rengi bir tık daha koyu, tok bir kırmızıya çeviririz */
     transform: translateY(-4px);
-    /* Butonu 4 piksel havaya kaldırır */
     box-shadow: 0 8px 15px rgba(211, 47, 47, 0.4);
-    /* Havaya kalktığı için kendi renginde efsane bir gölge yayar */
 }
 
 .order-btn:active {
